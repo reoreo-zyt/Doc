@@ -1,0 +1,49 @@
+name: CI
+
+#on: [push]
+
+# 在master分支发生push事件时触发。
+on:
+  push:
+    branches:
+      - master
+
+env: # 设置环境变量
+  TZ: Asia/Shanghai # 时区（设置时区可使页面中的`最近更新时间`使用该时区时间）
+
+jobs:
+  build: # 自定义名称
+    runs-on: ubuntu-latest # 运行在虚拟机环境ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - name: Checkout # 步骤1
+        uses: actions/checkout@v1 # 使用的动作。格式：userName/repoName。作用：检出仓库，获取源码。 官方actions库：https://github.com/actions
+      - name: Use Node.js ${{ matrix.node-version }} # 步骤2
+        uses: actions/setup-node@v3 # 作用：安装nodejs
+        with:
+          node-version: ${{ matrix.node-version }} # 版本
+      - name: Build-and-deploy # 步骤3
+        run: |
+          remote_addr=`git remote get-url --push origin`
+          commit_info=`git describe --all --always --long`
+          user_name=`git log -1 --pretty=format:'%an'`
+          user_email=`git log -1 --pretty=format:'%ae'`
+          deploy_branch=gh-pages
+          yarn
+          yarn build
+          cd docs/.vuepress/dist
+          git config --global init.defaultBranch $deploy_branch
+          git init
+          git config user.name ${user_name}
+          git config user.email ${user_email}
+          git add -A
+          git commit -m "auto deploy, $commit_info"
+          remote_addr=`echo $remote_addr | awk -F'://' '{print $2}'`
+          remote_addr=https://${user_name}:${{secrets.ACCESS_TOKEN}}@${remote_addr}
+          git remote add origin ${remote_addr}
+          git push origin HEAD:$deploy_branch --force # 推送到github $deploy_branch分支
+# 我总是告诉自己，读点书吧，学海无涯。明明跟着教程走却总是在action的部署时候出错。究其原因是自己没有设置Token。所以我跟着教程学教程让我在环境变量里设置一个ACCESS_TOKEN并放进自己的Token。但是在运行这个文件的时候还是会出错，我找了三天才发现上面的一句话“remote_addr=https://${user_name}:${{secrets. GITHUB_TOKEN}}@${remote_addr}”里面的变量名居然是GITHUB_TOKEN。
