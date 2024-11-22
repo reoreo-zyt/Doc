@@ -1,0 +1,12 @@
+# http://editorconfig.org
+# root = true
+
+# # 指定文件类型的缩进风格
+# indent_style = space
+# indent_size = 2
+
+# # 指定特定文件类型的换行符
+# end_of_line = lf
+
+# # 指定特定目录下文件的编码
+# charset = utf-8
