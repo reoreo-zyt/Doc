@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BFC清除浮动示例</title>
+    <style>
+      .container {
+        border: 1px solid black;
+        background: black;
+        /* 创建 BFC */
+        overflow: hidden;
+      }
+
+      .float-left {
+        float: left;
+        height: 300px;
+        width: 200px;
+        margin: 50px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="float-left" style="background-color: #f00">Float Left</div>
+      <div class="float-left" style="background-color: #0f0">Float Left</div>
+      <!-- 这里的 .float-left 元素浮动，父元素 .container 使用 overflow: hidden; 触发 BFC -->
+    </div>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<style>
+    *{
+      margin: 0;padding: 0;
+    }
+    .page{
+      height: 200px;
+      display: flex;
+    }
+    .left, .right{
+      width: 200px;
+      background: #1bda34;
+    }
+    .content{
+      background: #e93a3a;
+      flex: 1;
+      order: 1;
+    }
+    .left{
+      order: 0;
+    }
+    .right{
+      order: 2;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="content">主体内容</div>
+    <div class="left">广告位</div>
+    <div class="right">广告位</div>
+  </div>
+</body>

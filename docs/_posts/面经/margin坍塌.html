@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>包含坍塌</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        background: green;
+        width: 300px;
+        height: 300px;
+        overflow: hidden; /* 触发 BFC 解决包含坍塌，父元素不移动*/
+      }
+
+      .box {
+        background: red;
+        width: 100px;
+        height: 100px;
+        margin: 50px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="box"></div>
+    </div>
+  </body>
+</html>

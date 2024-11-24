@@ -6,7 +6,10 @@ sidebar: auto
 categories:
   - 前端
 tags:
-  - vue2 vue3 vite webpack
+  - vue2
+  - vue3
+  - vite
+  - webpack
 author:
   name: reoreo-zyt
   link: https://github.com/reoreo-zyt
