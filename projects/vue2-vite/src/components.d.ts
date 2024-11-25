@@ -7,6 +7,14 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    ElButton: typeof import('element-ui/lib/button')['default']
+    ElCard: typeof import('element-ui/lib/card')['default']
+    ElCol: typeof import('element-ui/lib/col')['default']
+    ElMenu: typeof import('element-ui/lib/menu')['default']
+    ElMenuItem: typeof import('element-ui/lib/menu-item')['default']
+    ElMenuItemGroup: typeof import('element-ui/lib/menu-item-group')['default']
+    ElRow: typeof import('element-ui/lib/row')['default']
+    ElSubmenu: typeof import('element-ui/lib/submenu')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
     IconCommunity: typeof import('./components/icons/IconCommunity.vue')['default']
     IconDocumentation: typeof import('./components/icons/IconDocumentation.vue')['default']
