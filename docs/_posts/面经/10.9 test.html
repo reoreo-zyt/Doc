@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let arr = [1, 5, 14, 26, 27, 27, 40, 55];
+      let n = 53;
+
+      function find(arr, n) {
+        let left = 0;
+        let right = arr.length - 1;
+        while (left <= right) {
+          if (arr[left] + arr[right] === n) {
+            return [left, right];
+          } else {
+            if (arr[left] + arr[right] < n) {
+              left++;
+            } else {
+              right--;
+            }
+          }
+        }
+        return -1;
+      }
+
+      console.log(find(arr, n));
+    </script>
+  </body>
+</html>

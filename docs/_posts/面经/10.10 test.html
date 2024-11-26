@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function repeat(string, n) {
+        let result = "";
+        //边界情况处理
+        if (!string || n < 1 || n > Number.MAX_SAFE_INTEGER) {
+          return result;
+        }
+        for (let i = 0; i < n; i++) {
+          result += string;
+        }
+        return result;
+      }
+
+      const demo1 = repeat("*", 3); // ***
+      console.log("🚀 ~ demo1:", demo1);
+      const demo2 = repeat("abc", 2); // abcabcabc
+      console.log("🚀 ~ demo2:", demo2);
+      const demo3 = repeat("abc", 0); // ""
+      console.log("🚀 ~ demo3:", demo3);
+    </script>
+  </body>
+</html>

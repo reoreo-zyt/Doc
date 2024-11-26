@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function MemberManager(members) {
+        this.members = members;
+      }
+
+      MemberManager.prototype.addMember = function (newMember) {
+        this.members.push(newMember);
+      };
+
+      var allMembers = [
+        { name: "A", age: 21 },
+        { name: "B", age: 18 },
+      ];
+
+      var memberManager = new MemberManager(allMembers);
+      var memberC = { name: "C", age: 20 };
+      memberManager.addMember(memberC);
+      allMembers = allMembers.slice(1); // （删除第一个元素）从第一个数组下标开始
+      var memberD = { name: "D", age: 19 };
+      memberManager.addMember(memberD);
+
+      console.log(allMembers); // [ { name: 'B', age: 18 }, { name: 'C', age: 20 } ] 考察 slice 引用数据类型
+      console.log(memberManager.members); // [ { name: 'A', age: 21 }, { name: "B", age: 18 }, { name: "C", age: 20 }, { name: "D", age: 19 }]
+    </script>
+  </body>
+</html>

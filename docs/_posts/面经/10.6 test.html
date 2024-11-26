@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let obj = {
+        a: 222,
+        fn: function () {
+          let _this = this;
+          setTimeout(function () {
+            console.log(this.a); // undefined
+            console.log(_this.a); // 222
+          });
+        },
+      };
+
+      obj.fn(); // undefined
+    </script>
+  </body>
+</html>

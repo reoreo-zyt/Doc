@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 1，1，2，3，5，8，13...k...n，求第 k 个数
+
+      // 当 k 为 0，1 时，返回 1
+      // 当 k 为 2 时，返回 1 + 1 = 2
+      // 当 k 为 3 时，返回 1 + 2 = 3
+      // 当 k 为 4 时，返回 2 + 3 = 5
+      // 当 k 为 5 时，返回 3 + 5 = 8
+      // 可以发现规律，k 是 k-1 和 k-2 的和，所以可以使用递归
+      function getNum(k) {
+        return k < 2 ? 1 : getNum(k - 1) + getNum(k - 2);
+      }
+      console.log(getNum(0)); // 1
+      console.log(getNum(1)); // 1
+      console.log(getNum(2)); // 2
+      console.log(getNum(3)); // 3
+      console.log(getNum(4)); // 5
+      console.log(getNum(5)); // 8
+      console.log(getNum(6)); // 13
+    </script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Foo() {
+        print = function () {
+          console.log(1);
+        };
+        // console.log(this);
+        return this;
+      }
+      Foo.print = function () {
+        console.log(2);
+      };
+      Foo.prototype.print = function () {
+        console.log(3);
+      };
+      var print = function () {
+        console.log(4);
+      };
+      function print() {
+        console.log(5);
+      }
+
+      Foo.print(); // 2
+      print(); // 4
+      Foo().print(); // 1
+      print(); // 1
+      new Foo.print(); // 2
+      new Foo().print(); // 3
+    </script>
+  </body>
+</html>
