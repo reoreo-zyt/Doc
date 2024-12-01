@@ -9,10 +9,13 @@
 		"lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
 	},
 	"dependencies": {
+		"blueimp-md5": "^2.19.0",
+		"vuedraggable": "^2.24.3",
 		"echarts": "^5.5.1",
 		"echarts-gl": "^2.0.9",
 		"element-ui": "^2.15.14",
 		"pinia": "^2.0.16",
+		"sortablejs": "^1.15.6",
 		"vue": "^2.7.7",
 		"vue-router": "^3.5.4"
 	},

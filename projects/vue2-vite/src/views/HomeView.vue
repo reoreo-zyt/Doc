@@ -72,6 +72,18 @@
 							v-model="tel"
 						></t-input>
 					</el-row>
+					<el-row v-if="defaultActive == '2-2'" style="margin: 10px">
+						<h4 style="margin-top: 0">内置防抖功能</h4>
+						<t-button size="small" type="primary" @click="exportExcel"
+							>导出</t-button
+						>
+					</el-row>
+					<el-row v-if="defaultActive == '2-3'" style="margin: 10px">
+						<t-timer-btn :second="second" @click="sendCode" />
+					</el-row>
+					<el-row v-if="defaultActive == '2-4'" style="margin: 10px">
+						<TLayoutPageView></TLayoutPageView>
+					</el-row>
 				</el-col>
 			</el-row>
 		</div>
@@ -79,9 +91,13 @@
 </template>
 
 <script>
+import TLayoutPageView from './TLayoutPage/index.vue'
+
 export default {
 	name: 'HomeView',
-	components: {},
+	components: {
+		TLayoutPageView
+	},
 	data() {
 		return {
 			welcomeItemData: [
@@ -147,6 +163,21 @@ export default {
 							index: '2-1',
 							icon: 'el-icon-tickets',
 							title: 'Input 组件'
+						},
+						{
+							index: '2-2',
+							icon: 'el-icon-tickets',
+							title: 'Button 组件'
+						},
+						{
+							index: '2-3',
+							icon: 'el-icon-tickets',
+							title: '验证码倒计时'
+						},
+						{
+							index: '2-4',
+							icon: 'el-icon-tickets',
+							title: '布局组件'
 						}
 					]
 				}
@@ -156,7 +187,9 @@ export default {
 			day: null,
 			money2: null,
 			percent: null,
-			tel: ''
+			tel: '',
+			// t-timer-btn
+			second: 10
 		}
 	},
 	methods: {
@@ -171,6 +204,13 @@ export default {
 		},
 		blurVal2(val) {
 			console.log('获取输入的值2', val)
+		},
+		// 导出
+		async exportExcel() {
+			console.log('导出')
+		},
+		sendCode() {
+			console.log('点击获取验证码')
 		}
 	}
 }

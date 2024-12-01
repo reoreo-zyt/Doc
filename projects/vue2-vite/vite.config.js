@@ -84,11 +84,13 @@ export default defineConfig({
 		preprocessorOptions: {
 			// css的预处理器选项
 			scss: {
-				additionalData: '@import "src/assets/styles/var.scss";' // 全局引入scss变量
-			},
-			less: {
-				javascriptEnabled: true
+				api: 'modern-compiler',
+				silenceDeprecations: ['legacy-js-api', 'color-functions'],
+				additionalData: '@use "src/assets/styles/var.scss" as *;' // 全局引入scss变量
 			}
+			// less: {
+			// 	javascriptEnabled: true
+			// }
 		}
 	},
 	json: {
